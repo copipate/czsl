@@ -38,39 +38,39 @@ tar -zxvf attr-ops-data.tar.gz --strip 1
 unzip mitstates.zip 'release_dataset/images/*' -d mit-states/
 mv mit-states/release_dataset/images mit-states/images/
 rm -r mit-states/release_dataset
-rename "s/ /_/g" mit-states/images/*
+mv "s/ /_/g" mit-states/images/*
 
-# UT-Zappos50k
-unzip utzap.zip -d ut-zap50k/
-mv ut-zap50k/ut-zap50k-images ut-zap50k/_images/
+# # UT-Zappos50k
+# unzip utzap.zip -d ut-zap50k/
+# mv ut-zap50k/ut-zap50k-images ut-zap50k/_images/
 
-# C-GQA
-unzip cgqa.zip -d cgqa/
+# # C-GQA
+# unzip cgqa.zip -d cgqa/
 
-# Download new splits for Purushwalkam et. al
-tar -zxvf splits.tar.gz
+# # Download new splits for Purushwalkam et. al
+# tar -zxvf splits.tar.gz
 
-# remove all zip files and temporary files
-rm -r attr-ops-data.tar.gz mitstates.zip utzap.zip splits.tar.gz cgqa.zip
+# # remove all zip files and temporary files
+# rm -r attr-ops-data.tar.gz mitstates.zip utzap.zip splits.tar.gz cgqa.zip
 
-# Download embeddings
+# # Download embeddings
 
-# Glove (from attribute as operators)
-mv data/glove/* glove/
+# # Glove (from attribute as operators)
+# mv data/glove/* glove/
 
-# FastText
-cd fast
-python download_embeddings.py
-rm cc.en.300.bin.gz
+# # FastText
+# cd fast
+# python download_embeddings.py
+# rm cc.en.300.bin.gz
 
-# Word2Vec
-cd ../w2v
-wget -c "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz"
-gzip -d GoogleNews-vectors-negative300.bin.gz
-rm GoogleNews-vectors-negative300.bin.gz
+# # Word2Vec
+# cd ../w2v
+# wget -c "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz"
+# gzip -d GoogleNews-vectors-negative300.bin.gz
+# rm GoogleNews-vectors-negative300.bin.gz
 
-cd ..
-rm -r data
+# cd ..
+# rm -r data
 
-cd $CURRENT_DIR
-python utils/reorganize_utzap.py
+# cd $CURRENT_DIR
+# python utils/reorganize_utzap.py
