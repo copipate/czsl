@@ -40,19 +40,19 @@ mv mit-states/release_dataset/images mit-states/images/
 rm -r mit-states/release_dataset
 mv "s/ /_/g" mit-states/images/*
 
-# UT-Zappos50k
-unzip utzap.zip -d ut-zap50k/
-mv ut-zap50k/ut-zap50k-images ut-zap50k/_images/
+# # UT-Zappos50k
+# unzip utzap.zip -d ut-zap50k/
+# mv ut-zap50k/ut-zap50k-images ut-zap50k/_images/
 
-# C-GQA
-unzip cgqa.zip -d cgqa/
+# # C-GQA
+# unzip cgqa.zip -d cgqa/
 
-# Download new splits for Purushwalkam et. al
-tar -zxvf splits.tar.gz
+# # Download new splits for Purushwalkam et. al
+# tar -zxvf splits.tar.gz
 
-# remove all zip files and temporary files
-rm -r attr-ops-data.tar.gz mitstates.zip utzap.zip splits.tar.gz cgqa.zip
-
+# # remove all zip files and temporary files
+# rm -r attr-ops-data.tar.gz mitstates.zip utzap.zip splits.tar.gz cgqa.zip
+ rm -r mitstates.zip
 # Download embeddings
 
 # Glove (from attribute as operators)
