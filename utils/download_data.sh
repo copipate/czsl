@@ -18,11 +18,11 @@ cp utils/download_embeddings.py $FOLDER/fast
 
 
 # Download everything
-# wget --show-progress -O $FOLDER/attr-ops-data.tar.gz https://utexas.box.com/shared/static/h7ckk2gx5ykw53h8o641no8rdyi7185g.gz
+wget --show-progress -O $FOLDER/attr-ops-data.tar.gz https://utexas.box.com/shared/static/h7ckk2gx5ykw53h8o641no8rdyi7185g.gz
 wget --show-progress -O $FOLDER/mitstates.zip http://wednesday.csail.mit.edu/joseph_result/state_and_transformation/release_dataset.zip
-# wget --show-progress -O $FOLDER/utzap.zip http://vision.cs.utexas.edu/projects/finegrained/utzap50k/ut-zap50k-images.zip
-# wget --show-progress -O $FOLDER/splits.tar.gz https://www.senthilpurushwalkam.com/publication/compositional/compositional_split_natural.tar.gz
-# wget --show-progress -O $FOLDER/cgqa.zip https://s3.mlcloud.uni-tuebingen.de/czsl/cgqa-updated.zip
+wget --show-progress -O $FOLDER/utzap.zip http://vision.cs.utexas.edu/projects/finegrained/utzap50k/ut-zap50k-images.zip
+wget --show-progress -O $FOLDER/splits.tar.gz https://www.senthilpurushwalkam.com/publication/compositional/compositional_split_natural.tar.gz
+wget --show-progress -O $FOLDER/cgqa.zip https://s3.mlcloud.uni-tuebingen.de/czsl/cgqa-updated.zip
 
 echo "Data downloaded. Extracting files..."
 sed -i "s|ROOT_FOLDER|$FOLDER|g" utils/reorganize_utzap.py
@@ -40,37 +40,37 @@ mv mit-states/release_dataset/images mit-states/images/
 rm -r mit-states/release_dataset
 mv "s/ /_/g" mit-states/images/*
 
-# # UT-Zappos50k
-# unzip utzap.zip -d ut-zap50k/
-# mv ut-zap50k/ut-zap50k-images ut-zap50k/_images/
+# UT-Zappos50k
+unzip utzap.zip -d ut-zap50k/
+mv ut-zap50k/ut-zap50k-images ut-zap50k/_images/
 
-# # C-GQA
-# unzip cgqa.zip -d cgqa/
+# C-GQA
+unzip cgqa.zip -d cgqa/
 
-# # Download new splits for Purushwalkam et. al
-# tar -zxvf splits.tar.gz
+# Download new splits for Purushwalkam et. al
+tar -zxvf splits.tar.gz
 
-# # remove all zip files and temporary files
-# rm -r attr-ops-data.tar.gz mitstates.zip utzap.zip splits.tar.gz cgqa.zip
+# remove all zip files and temporary files
+rm -r attr-ops-data.tar.gz mitstates.zip utzap.zip splits.tar.gz cgqa.zip
 
-# # Download embeddings
+# Download embeddings
 
-# # Glove (from attribute as operators)
-# mv data/glove/* glove/
+# Glove (from attribute as operators)
+mv data/glove/* glove/
 
-# # FastText
-# cd fast
-# python download_embeddings.py
-# rm cc.en.300.bin.gz
+# FastText
+cd fast
+python download_embeddings.py
+rm cc.en.300.bin.gz
 
-# # Word2Vec
-# cd ../w2v
-# wget -c "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz"
-# gzip -d GoogleNews-vectors-negative300.bin.gz
-# rm GoogleNews-vectors-negative300.bin.gz
+# Word2Vec
+cd ../w2v
+wget -c "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz"
+gzip -d GoogleNews-vectors-negative300.bin.gz
+rm GoogleNews-vectors-negative300.bin.gz
 
-# cd ..
-# rm -r data
+cd ..
+rm -r data
 
-# cd $CURRENT_DIR
-# python utils/reorganize_utzap.py
+cd $CURRENT_DIR
+python utils/reorganize_utzap.py
